@@ -1,0 +1,1 @@
+SELECT '{{ ref("model1") }}'
