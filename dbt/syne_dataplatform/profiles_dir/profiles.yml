@@ -1,0 +1,15 @@
+syne_dataplatform:
+    outputs:
+      dev:
+        dataset: syne_dataplatform_dev
+        job_execution_timeout_seconds: 300
+        job_retries: 1
+        keyfile: C:\Users\shash\OneDrive\My Learning\DBT\Mastering dbt - From Begenning
+          to Pro\digital-sprite-404604-6a798dd8e70f.json
+        location: US
+        method: service-account
+        priority: interactive
+        project: digital-sprite-404604
+        threads: 3
+        type: bigquery
+    target: dev
