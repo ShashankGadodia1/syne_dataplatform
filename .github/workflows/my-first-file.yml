@@ -28,6 +28,10 @@ on:
         description: 'Branch Name'
         default: ''
         required: true
+      commit_message:
+        description: 'Commit Message'
+        default: ''
+        required: true
 jobs:
   first-job:
     runs-on: ubuntu-latest
