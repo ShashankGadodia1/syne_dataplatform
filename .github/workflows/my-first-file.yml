@@ -33,11 +33,16 @@ on:
         default: ''
         required: true
 jobs:
-  first-job:
+  deploy-nonprod:
     runs-on: ubuntu-latest
+    if: github.event.input.env = 'non-prod'
     steps:
-      - name: Print greeting
-        run: echo "Hello World!"
-
-      - name: Print goodbye
-        run: echo "Done - bye!"
+      - name: checkout
+        uses: actions/checkout@v3
+        # with:
+        #  persist-credentials: true
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8.6'
+      
