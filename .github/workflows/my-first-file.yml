@@ -4,6 +4,13 @@ name: First Workflow
 on: 
   workflow_dispatch:
     inputs:
+      env:
+        type: choice
+        description: 'Environment'
+        options:
+          - non-prod
+          - uat
+          - prod
       dag_name:
         description: 'DAG Name'
         default: ''
