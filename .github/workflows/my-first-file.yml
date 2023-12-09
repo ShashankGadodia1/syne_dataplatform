@@ -11,6 +11,7 @@ on:
           - non-prod
           - uat
           - prod
+        required: true
       dag_name:
         description: 'DAG Name'
         default: ''
@@ -19,6 +20,14 @@ on:
         description: 'Model Name'
         default: ''
         required: false
+      folder_name:
+        description: 'Folder Name'
+        default: ''
+        required: true
+      branch_name:
+        description: 'Branch Name'
+        default: ''
+        required: true
 jobs:
   first-job:
     runs-on: ubuntu-latest
