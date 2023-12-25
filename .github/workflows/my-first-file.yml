@@ -49,4 +49,9 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install psycopg2
+          # pip install -r docker/requirements.txt
+          echo ${{github.event.input.dag_name}}
+          echo ${{github.event.input.model_name}}
+          echo ${{github.event.input.folder_name}}
+      
 
