@@ -35,7 +35,7 @@ on:
 jobs:
   deploy-nonprod:
     runs-on: ubuntu-latest
-    if: github.event.input.env == 'non-prod'
+    # if: github.event.input.env == 'non-prod'
     steps:
       - name: checkout
         uses: actions/checkout@v3
