@@ -43,8 +43,8 @@ jobs:
         #  persist-credentials: true
       - name: Setup Python
         uses: actions/setup-python@v3
-        with:
-          python-version: '3.8.6'
+        #with:
+        #  python-version: '3.8.6'
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
