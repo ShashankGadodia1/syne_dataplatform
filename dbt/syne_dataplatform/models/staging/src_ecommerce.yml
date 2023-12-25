@@ -1,0 +1,27 @@
+# Needed for every dbt yml file - https://docs.getdbt.com/faqs/project/why-version-2
+version: 2
+
+sources:
+  - name: thelook_ecommerce
+    # database <> project are interchangeable in dbt-bigquery
+    # project is specific to just dbt-bigquery, whereas database can be used with anything - e.g. Snowflake
+    database: bigquery-public-data
+    tables:
+      - name: distribution_centers
+        description: This table contains details for distribution centers.
+      - name: events
+        description: This table contains event details.
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        loaded_at_field: created_at
+      - name: inventory_items
+        description: This table contains inventory details.
+      - name: order_items
+        description: This table contains order items details.
+      - name: orders
+        description: This table contains order details.
+      - name: products
+        description: This table contains product details.
+      - name: users
+        description: This table contains user details.
