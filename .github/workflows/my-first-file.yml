@@ -53,5 +53,6 @@ jobs:
           echo ${{github.event.input.dag_name}}
           echo ${{github.event.input.model_name}}
           echo ${{github.event.input.folder_name}}
+          echo ${{github.event.input.env}}
       
 
