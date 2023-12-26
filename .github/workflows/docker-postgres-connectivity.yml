@@ -1,0 +1,31 @@
+name: Docker PostgreSQL Connection
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  connect-to-postgres:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: your_database_name
+          POSTGRES_USER: your_username
+          POSTGRES_PASSWORD: your_password
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Connect to PostgreSQL
+        run: |
+          # Example command to connect to the PostgreSQL database
+          # Replace `your_host`, `your_username`, `your_database_name`, and `your_password` with your actual values
+          psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "SELECT version();"
