@@ -14,8 +14,8 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v2
-      # with:
-      #  python-version: '3.8.1'  # Replace with your Python version
+      with:
+        python-version: '3.8.1'  # Replace with your Python version
 
     - name: Install dependencies
       run: |
@@ -24,10 +24,13 @@ jobs:
 
     - name: Connect to PostgreSQL and Run Script
       run: |
-        python .github/workflows/postgres-connectivity.py  # Replace with your Python script location
+        # python .github/workflows/postgres-connectivity.py  # Replace with your Python script location
+        # psql -h ${{ secrets.DB_HOST }} -U ${{ secrets.DB_USERNAME }} -d ${{ secrets.DB_NAME }} -c "\copy (SELECT * FROM your_table) TO '/path/to/download/location/file.csv' CSV HEADER;
+        psql -h postgres -U postgres -d postgres -c "\copy (select * from dataplatform.dag_config) TO './download/dataplatform/dag_config.csv' CSV HEADER;
       env:
         DB_NAME: postgres
         DB_USER: postgres
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        # DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_PASSWORD: postgres
         DB_HOST: postgres
         DB_PORT: 5432  # Replace with your PostgreSQL port
