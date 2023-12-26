@@ -26,7 +26,8 @@ jobs:
       run: |
         # python .github/workflows/postgres-connectivity.py  # Replace with your Python script location
         # psql -h ${{ secrets.DB_HOST }} -U ${{ secrets.DB_USERNAME }} -d ${{ secrets.DB_NAME }} -c "\copy (SELECT * FROM your_table) TO '/path/to/download/location/file.csv' CSV HEADER;
-        psql -h postgres -U postgres -d postgres -c "\copy (select * from dataplatform.dag_config) TO './download/dataplatform/dag_config.csv' CSV HEADER;
+        # psql -h postgres -U postgres -d postgres -c "\copy (select * from dataplatform.dag_config) TO './download/dataplatform/dag_config.csv' CSV HEADER;
+        psql -h postgres -U postgres -d postgres -c "select * from dataplatform.dag_config';
       env:
         DB_NAME: postgres
         DB_USER: postgres
