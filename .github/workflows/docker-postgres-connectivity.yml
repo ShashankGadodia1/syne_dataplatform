@@ -28,4 +28,4 @@ jobs:
         run: |
           # Example command to connect to the PostgreSQL database
           # Replace `your_host`, `your_username`, `your_database_name`, and `your_password` with your actual values
-          psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "SELECT version();"
+          psql "postgresql://postgres:postgres@127.0.0.1:5432/postgres" -c "SELECT version();"
