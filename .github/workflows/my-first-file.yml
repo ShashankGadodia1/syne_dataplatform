@@ -43,13 +43,6 @@ jobs:
         #  persist-credentials: true
       - name: Setup Python
         uses: actions/setup-python@v3
-<<<<<<< HEAD
-        with:
-          python-version: '3.8.6'
-      - name: Install dependencies
-        run: pip install psycopg2-binary
-
-=======
         #with:
         #  python-version: '3.8.6'
       - name: Install Python dependencies
@@ -60,7 +53,5 @@ jobs:
           echo ${{github.event.input.dag_name}}
           echo ${{github.event.input.model_name}}
           echo ${{github.event.input.folder_name}}
-          echo github.event.input.env
-      
->>>>>>> eec98b12a6069f088d91f61031aefd60c8010f85
+          echo ${github.event.input.env}
 
