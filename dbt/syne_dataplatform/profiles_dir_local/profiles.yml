@@ -11,4 +11,6 @@ syne_dataplatform:
         project: digital-sprite-404604
         threads: 3
         type: bigquery
+        dataproc_region: us-central1
+        gcs_bucket: dbt-spark-bucket
     target: dev

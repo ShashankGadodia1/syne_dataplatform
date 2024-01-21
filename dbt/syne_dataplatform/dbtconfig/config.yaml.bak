@@ -1,0 +1,87 @@
+airflow_dbt_poc:
+    Manfest_file_model_1_2:
+        owner: 'swapnali'
+        depends_on_past: False
+        start_date: '2023-11-29 00:00:00'
+        email: ['swapnalibharambe@gmail.com']
+        email_on_failure: False
+        email_on_retry: False
+        retries: 1
+        retry_delay: 5
+        dbt_tasks:
+            module1: 
+                name: my_first_dbt_model
+                is_active_flag: y
+            module2: 
+                name: my_second_dbt_model
+                is_active_flag: y   
+    Manfest_file_model_3_4_5_6:
+        owner: 'swapnali'
+        depends_on_past: False
+        start_date: '2023-11-29'
+        email: ['swapnalibharambe@gmail.com']
+        email_on_failure: False
+        email_on_retry: False
+        retries: 1
+        retry_delay: 5
+        dbt_tasks:
+            module1: 
+                name: my_third_dbt_model
+                is_active_flag: y
+            module2: 
+                name: my_fourth_dbt_model
+                is_active_flag: y  
+            module3: 
+                name: my_fifth_dbt_model
+                is_active_flag: y 
+            module4: 
+                name: my_sixth_dbt_model
+                is_active_flag: y 
+    Manfest_file_model_test:
+        owner: 'swapnali'
+        depends_on_past: False
+        start_date: '2023-11-29 00:00:00'
+        email: ['swapnalibharambe@gmail.com']
+        email_on_failure: False
+        email_on_retry: False
+        retries: 1
+        retry_delay: 5
+        dbt_tasks:
+            module1: 
+                name: my_first_dbt_model
+                is_active_flag: y
+            module2: 
+                name: my_second_dbt_model
+                is_active_flag: y 
+    dag_l3_sales:
+        owner: 'swapnali'
+        depends_on_past: False
+        start_date: '2024-01-01'
+        email: ['swapnalibharambe@gmail.com']
+        email_on_failure: False
+        email_on_retry: False
+        retries: 1
+        retry_delay: 5
+        dbt_tasks:
+            module1: 
+                name: stg_ecommerce__order_items
+                is_active_flag: y
+            module2: 
+                name: stg_ecommerce__orders
+                is_active_flag: y  
+            module3: 
+                name: stg_ecommerce__products.v2
+                is_active_flag: y 
+            module4: 
+                name: int_ecommerce__first_order_created
+                is_active_flag: y
+            module5: 
+                name: int_ecommerce__order_items_products
+                is_active_flag: y
+            module6: 
+                name: fct_orders
+                is_active_flag: y 
+            module7: 
+                name: fct_orders_access
+                is_active_flag: y
+            

@@ -6,7 +6,8 @@ WITH source AS (
 
 SELECT
 	-- IDs
-	id AS order_item_id,
+	--cast(id as string) AS order_item_id,
+	id as order_item_id,
 	order_id,
 	user_id,
 	product_id,

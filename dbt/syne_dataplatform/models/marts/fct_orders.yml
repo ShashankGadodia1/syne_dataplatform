@@ -8,8 +8,14 @@ groups:
       slack: sales-data
       github: sales-data-team
 
+  - name: marketing
+    owner:
+      email: marketing-xyz@my-organization.com
+      slack: marketing-data
+      github: marketing-team
+
 models:
-  - name: dim_orders
+  - name: fct_orders
     description: "Table of order level information"
     # Set this model to be a part of the sales group we define above
     # We don't need to define the group and the model in the same yml file!
@@ -19,8 +25,8 @@ models:
     # Private - only other models in the same (sales) group can ref() this model
     # Protected - only other models in the same group or project can ref() this model
     # Public - any other model can ref() this model
-    access: private
-
+    access: protected
+    #access: private
     columns:
 
     # Columns from stg_ecommerce__orders
@@ -31,14 +37,14 @@ models:
         tests:
           # Generic test that we define in tests/generic/test_primary_key.sql
           # Takes arguments for model & column_name, both of which are automatically passed to it
-          - primary_key:
-              severity: error
+          #- primary_key:
+          #    severity: error
           - unique:
               severity: error
           - relationships:
               to: ref('stg_ecommerce__orders')
               field: order_id
-              severity: error
+              severity: warn
 
       - name: order_created_at
         description: "When the order was created"

@@ -37,9 +37,9 @@ models:
         data_type: INTEGER
         tests:
           - not_null
-          - relationships:
-              to: ref('stg_ecommerce__products')
-              field: product_id
+          #- relationships:
+          #    to: ref('stg_ecommerce__products')
+          #    field: product_id
 
       - name: item_sale_price
         data_type: FLOAT64

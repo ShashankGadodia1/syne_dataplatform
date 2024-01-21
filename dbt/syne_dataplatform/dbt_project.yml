@@ -1,4 +1,3 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -18,20 +17,47 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+log-path: "logs"
+#docs-paths: ["docs"] #This is used to define docs block macros
+#packages-install-path: ["dbt_packages"] #Need to explore this practically.
+asset-paths: ["assets"]
 
-clean-targets:         # directories to be removed by `dbt clean`
+clean-targets:         # directories to be removed by `dbt clean`. If not mentioned The clean command will remove files in your target-path
   - "target"
   - "dbt_packages"
-
+  - "logs"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
-
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
+
 models:
   syne_dataplatform:
     # Config indicated by + and applies to all files under models/example/
-    #example:
-      #+materialized: view
+    #staging:
+    #  +materialized: table
+    #marts:
+        #+post-hook:
+          # this can be a list
+          #- "analyze table {{ this }} compute statistics for all columns"
+          # or call a macro instead
+          #- "{{ analyze_table() }}"
+    +persist_docs:
+      relation: true
+      columns: true
+    # Table deletes 168 hours (7 days) for non dev env after creation
+    +hours_to_expiration: 168
+    #+hours_to_expiration: |
+      #{%- if target.name == "dev" -%} 1
+      #{%- else -%} 168
+      #{%- endif -%}
+
+tests:
+  syne_dataplatform:
+    +severity: error # All tests in our lesson project default to warn
+    #mart:
+    #  +severity: error
+    #  +warn_if: >10
+    #  +error_if: >100

@@ -51,6 +51,8 @@ models:
     versions:
         # Matches what's above -- nothing more needed
         - v: 1
+          config:
+            alias: stg_ecommerce__products_uat
           columns:
           # This means: use the 'columns' list from above, but exclude "brand" as we added it in v2
           - include: all

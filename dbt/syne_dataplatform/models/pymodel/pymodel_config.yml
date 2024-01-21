@@ -1,0 +1,6 @@
+version: 2
+models:
+  - name: py__order_items_products
+    config:
+      submission_method: serverless
+      materialized: table

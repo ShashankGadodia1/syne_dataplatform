@@ -1,0 +1,29 @@
+version: 2
+exposures:
+  - name: Monthly_revenue_profit_sales_dashboard
+    type: dashboard
+    maturity: low
+    url: https://4c12212a.us2a.app.preset.io/superset/dashboard/p/nvYZPjvPblj/
+    description: Executive dahsboard about monthly revenue against profits
+
+    depends_on:
+      - ref('fct_orders')
+      - ref('stg_ecommerce__products')
+
+    owner:
+      name: Kaushal K. Mandrekar
+      email: kaushal.mandrekar@synechron.com
+
+  - name: Sale_Product_category_Dashboard
+    type: dashboard
+    maturity: low
+    url: https://4c12212a.us2a.app.preset.io/superset/dashboard/p/yk74PKzMdq6/
+    description: This dashboard shows total units sold till date for each product_category
+
+    depends_on:
+      - ref('fct_orders')
+      - ref('stg_ecommerce__products')
+
+    owner:
+      name: Kaushal K. Mandrekar
+      email: kaushal.mandrekar@synechron.com

@@ -13,11 +13,9 @@
 
 WITH source AS (
 	SELECT *
-
 	FROM {{ source('thelook_ecommerce', 'events') }}
 	-- where created_at < '2021-01-01'
 )
-
 SELECT
 	id AS event_id,
 	user_id,
@@ -40,7 +38,6 @@ FROM source
 
 {# Only runs this filter on an incremental run #}
 {% if is_incremental() %}
-
 {# The {{ this }} macro is essentially a {{ ref('') }} macro that allows for a circular reference #}
 WHERE created_at > (SELECT MAX(created_at) FROM {{ this }})
 

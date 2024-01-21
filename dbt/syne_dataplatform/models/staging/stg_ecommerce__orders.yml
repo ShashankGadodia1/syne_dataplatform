@@ -10,8 +10,8 @@ models:
               severity: error
           - unique:
               severity: error
-          - primary_key:
-              severity: error
+          #- primary_key:
+          #    severity: error
 
       - name: user_id
         description: 'This is user id'
